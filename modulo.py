@@ -15,11 +15,10 @@ def crear_matriz(filas: int, columnas:int ,valor_inicial) -> list:
     if type(filas) == int and type(columnas)== int:
         i = 0
         while i < filas: # El for me subrayaba la i y me molestaba
-            matriz += [crear_lista(valor_inicial,columnas)] # mira Ger reutilice :)
+            matriz += [crear_lista(valor_inicial,columnas)] 
             i += 1
     return matriz
 
-# matriz_numerica = crear_lista(crear_lista(0,3),15)
 
 def encontrar_posicion(lista:list,elemento):
     posicion = None

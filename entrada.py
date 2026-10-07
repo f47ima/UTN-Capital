@@ -41,7 +41,7 @@ def decidir_con_enteros(mensaje,mensaje_error,minimo:int,maximo:int):
     while not validacion_eleccion:
         if validar_entero(eleccion):
             parsear_eleccion = int(eleccion)
-            if parsear_eleccion >= minimo or parsear_eleccion <= maximo:
+            if parsear_eleccion >= minimo and parsear_eleccion <= maximo:
                 validacion_eleccion = True
             else:
                 eleccion = input(mensaje_error)

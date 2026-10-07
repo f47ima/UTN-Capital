@@ -1,6 +1,7 @@
-from os import system
+import subprocess
+from os import name
 import sys
-from input import *
+from entrada import *
 from modulo import *
 from validaciones import *
 from output import *
@@ -38,7 +39,7 @@ def main() -> None:
     while menu_principal:
         while menu_carga:
             if requerimiento_de_carga and primer_paso == 1:
-                cargar_o_cerrar = decidir_con_enteros("La inicializacion de la nueva base de datos precisa que cargue al menos un usuario con una compra mayor a 0.\nSeleccione como desea continuar:\1.Continuar cargando datos.\n2.Salir del programa.", "Seleccione solo uno de los numeros disponibles:\n>",1,2)
+                cargar_o_cerrar = decidir_con_enteros("La inicializacion de la nueva base de datos precisa que cargue al menos un usuario con una compra mayor a 0.\nSeleccione como desea continuar:\n1.Continuar cargando datos.\n2.Salir del programa.", "Seleccione solo uno de los numeros disponibles:\n>",1,2)
                 if cargar_o_cerrar == 2:
                     menu_principal = False
                     break
@@ -101,7 +102,7 @@ def main() -> None:
                     posiciones_maxima_accion_x_usuario = encontrar_maxima_accion(acciones_compradas)
                     mostrar_maximos(usuarios_capitalizados,posiciones_maxima_accion_x_usuario,acciones_mayusculas)
                 case 6:
-                    matriz_acciones_dolares = multiplicar_elementos_matriz(base_establecida,precio_acciones)
+                    matriz_acciones_dolares = multiplicar_elementos_matriz(acciones_compradas,precio_acciones)
                     coordenadas_maxima_inversion_accion = encontrar_maximo_matriz(matriz_acciones_dolares)
                     nombre_maxima_inversion = acciones_mayusculas[coordenadas_maxima_inversion_accion[2]]
                     fila = coordenadas_maxima_inversion_accion[1]
@@ -142,9 +143,7 @@ def main() -> None:
                     break
 
         if not menu_principal:
-            system("cls")
+            subprocess.run(["cmd", "/c", "cls"] if name == "nt" else ["clear"])
 
 if __name__ == "__main__":
     sys.exit(main())
-
-
